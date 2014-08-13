@@ -1,4 +1,8 @@
 language: java
 jdk:
   - oraclejdk7
-  - openjdk7
+install:
+  - wget http://search.maven.org/remotecontent?filepath=junit/junit/4.10/junit-4.10.jar -O /tmp/junit-4.10.jar
+#  - export CLASSPATH=/tmp/junit-4.10.jar:$CLASSPATH
+script: "./bild.py test"
+
