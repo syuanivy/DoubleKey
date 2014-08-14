@@ -14,8 +14,8 @@ if not os.path.exists("bilder.py"):
 from bilder import *
 
 def compile():
-    javac("src", "out")
-    javac("test", "out")
+    javac("src", "out", cp="/tmp/junit-4.10.jar")
+    javac("test", "out", cp="/tmp/junit-4.10.jar")
 
 def mkjar():
     require(compile)
@@ -23,7 +23,7 @@ def mkjar():
 
 def test():
     require(mkjar)
-    junit('test', cp='dist/doublekey.jar')
+    junit('test', cp="dist/doublekey.jar:/tmp/junit-4.10.jar")
 
 def all():
     #global JARCACHE
