@@ -18,7 +18,7 @@ def init():
 
 def compile():
     require(init)
-    javac("src", "out", cp="/tmp/junit-4.10.jar")
+    javac("src", "out", cp="src:/tmp/junit-4.10.jar")
     javac("test", "out", cp="out:/tmp/junit-4.10.jar")
 
 def mkjar():
