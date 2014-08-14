@@ -15,7 +15,7 @@ from bilder import *
 
 def compile():
     javac("src", "out", cp="/tmp/junit-4.10.jar")
-    javac("test", "out", cp="/tmp/junit-4.10.jar")
+    javac("test", "out", cp="out:/tmp/junit-4.10.jar")
 
 def mkjar():
     require(compile)
