@@ -23,7 +23,7 @@ def mkjar():
 
 def test():
     require(mkjar)
-    junit('test', cp='dist/doublekey.jar', verbose=True)
+    junit('test', cp='dist/doublekey.jar')
 
 def all():
     #global JARCACHE
