@@ -27,7 +27,8 @@ def mkjar():
 
 def test():
     require(mkjar)
-    junit('test', cp="dist/doublekey.jar:/tmp/junit-4.10.jar")
+    junit_runner('cs601.collections.TestMap',
+	cp="lib/doublekey-tests.jar:dist/doublekey.jar:/tmp/junit-4.10.jar")
 
 def all():
     require(init)
