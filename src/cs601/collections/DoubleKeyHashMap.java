@@ -33,6 +33,9 @@ public class DoubleKeyHashMap<K1,K2,V> implements DoubleKeyMap<K1,K2,V>{
 	public DoubleKeyHashMap(int n){
 		N = n;
 		dictionary = (LinkedList<Entry>[])new LinkedList[N];
+		for(int i = 0; i < N; i++){
+			dictionary[i] = new LinkedList<Entry>();
+		}   
 		size = 0;
 	}
 	
@@ -71,8 +74,7 @@ public class DoubleKeyHashMap<K1,K2,V> implements DoubleKeyMap<K1,K2,V>{
     	// overwrite previous value if any and return it, or return null
     	V previous = null;
     	if (containsKey(key1,key2)){
-    	     previous = remove(key1, key2);// remove previous value and return it if any
-    	     size--; // adjust the size accordingly
+    	     previous = remove(key1, key2);// remove previous value and return it if any, size-1
     	}else{
     	   previous = null;// no mapping for the two keys
     	}
@@ -176,7 +178,10 @@ public class DoubleKeyHashMap<K1,K2,V> implements DoubleKeyMap<K1,K2,V>{
 
     /** Reset the dictionary so there are no elements. */
     public void clear(){
-    	Arrays.fill(dictionary,null);
+    	Arrays.fill(dictionary,new LinkedList<Entry>());
+    	//for(int i = 0; i < N; i++){
+			//dictionary[i] = new LinkedList<Entry>();
+		//}  
     	size = 0;
     }
 }
