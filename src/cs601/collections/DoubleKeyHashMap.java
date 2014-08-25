@@ -1,7 +1,6 @@
 package cs601.collections;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+
 
 public class DoubleKeyHashMap<K1,K2,V> implements DoubleKeyMap<K1,K2,V>{
 	private int N;     //Number of buckets
@@ -23,9 +22,9 @@ public class DoubleKeyHashMap<K1,K2,V> implements DoubleKeyMap<K1,K2,V>{
 	// Constructor with no argument
 	public DoubleKeyHashMap(){
 		N = 1000;   //as big as possible since efficiency is not a major concern here
-		dictionary = (LinkedList<Entry>[])new LinkedList[N]; // how to fix the warning?
+		dictionary = (LinkedList<Entry>[])new LinkedList[N];   // type cast, how to fix the warning?
 		for(int i = 0; i < N; i++){
-			dictionary[i] = new LinkedList<Entry>();
+			dictionary[i] = new LinkedList<Entry>();   //instantiate each array element
 		}    
 		size = 0;
 	}
@@ -45,6 +44,7 @@ public class DoubleKeyHashMap<K1,K2,V> implements DoubleKeyMap<K1,K2,V>{
 		if(key1 == null || key2 == null ) return false;
 		else return true;
 	}
+	// if the value is valid
 	private boolean valueValid(V value){
 		if(value == null) return false;
 		else return true;
@@ -118,6 +118,7 @@ public class DoubleKeyHashMap<K1,K2,V> implements DoubleKeyMap<K1,K2,V>{
      *  Do nothing if not present.
      */
     public V remove(K1 key1, K2 key2){
+    	//check the keys
     	if(keyValid(key1,key2)==false){
     		return null;
     	}
@@ -146,7 +147,7 @@ public class DoubleKeyHashMap<K1,K2,V> implements DoubleKeyMap<K1,K2,V>{
      */
     public boolean containsKey(K1 key1, K2 key2){
     	if(keyValid(key1,key2) == false) return false;    //neither can be null
-    	if (get(key1,key2) != null) return true;   // able to find the value asscociated with key1 and key2
+    	if (get(key1,key2) != null) return true;   // able to find the value associated with key1 and key2
     	else return false;    
     }
 	
@@ -178,10 +179,7 @@ public class DoubleKeyHashMap<K1,K2,V> implements DoubleKeyMap<K1,K2,V>{
 
     /** Reset the dictionary so there are no elements. */
     public void clear(){
-    	Arrays.fill(dictionary,new LinkedList<Entry>());
-    	//for(int i = 0; i < N; i++){
-			//dictionary[i] = new LinkedList<Entry>();
-		//}  
+    	Arrays.fill(dictionary,new LinkedList<Entry>());   // instantiate with a new empty list
     	size = 0;
     }
 }
